@@ -1,0 +1,179 @@
+*{
+    margin: 0;
+    padding: 0;
+    background: #e3f9ff;
+    font-family: sans-serif;
+    box-sizing: border-box;  
+          
+
+}
+body{
+    width: 100%;
+    height: 100%;
+}
+
+.logo{
+    width: 10%;
+    border-radius: 10px;
+    border: transparent;
+    box-shadow: none;
+    margin-left:  -6%;
+    cursor: pointer;
+    margin-top: -10px;
+    
+}
+
+li, a{
+    font-family: sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    color: #333;
+    text-decoration: none;
+    border:5px solid rgba(255, 255, 255, 0.1);
+
+    
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10%;
+
+}
+
+.navbar{
+    list-style: none;
+
+}
+
+.navbar li{
+    display: inline-block;
+    padding: 0 20px;
+    background: transparent;
+    margin-right: 10px;
+}
+
+.navbar li a{
+    transition: all 0.3s ease 0s;
+}
+
+.navbar li a:hover{
+    color: aquamarine;
+}
+
+
+.flexbox{
+    position:absolute ;
+    margin-top: 10px;
+    margin-left: 500px;
+    margin-right: 400px;
+    font-size: 15px;
+    background: none;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border-radius: 20px;
+    border:5px solid rgba(255, 255, 255, 0.1);
+
+    
+}
+
+
+h1{
+    font-size: 100%;
+    font-weight: 2px;
+    font-style: italic;
+    margin-left: -10px;
+    margin-left: 100px;
+    margin-top: -5%;
+
+}
+
+h2{
+    font-size: 15vb;
+    font-family:fantasy;
+    margin-top: 3px;
+    margin-bottom: 15px;
+    font-stretch: extra-expanded;
+    
+}
+.header{
+    margin-left: -425px;
+}
+
+img{
+    margin:  50px auto ;
+    align-items: center;
+    margin-top: 50px;
+    border-radius: 50%;
+    width: 50%;
+    box-shadow: -8px -8px 15px rgba(255, 255, 255, 0.1),-5px -5px 15px rgba(0, 0, 0, 0.2); 
+    border: transparent;
+    margin-bottom: 10px;
+}
+
+.flexbox .form button{
+    
+    box-shadow: -8px -8px 15px rgba(255, 255, 255, 0.1),-5px -5px 15px rgba(0, 0, 0, 0.2);
+    border:5px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    margin-left: -40px;
+    width: 450px;
+    font-size: 50px;
+    margin-top: 10px;
+    position: relative;
+    outline: none;
+   
+
+}
+.form button a{
+    text-decoration: none;
+    margin: 20px;
+    width: 600px;
+    background-color: transparent;
+    cursor: pointer;
+    color: black;
+    font-size: 60px;
+    font-weight: 500;
+    border: none;
+    
+
+}
+
+#login{
+    background: linear-gradient(to right, yellow, purple);
+    background-repeat: no-repeat;
+    border: transparent;
+}
+
+#signup{
+    background: linear-gradient(to right, yellow, purple);
+    margin-bottom: 10px;
+    background-repeat: no-repeat;
+    border: transparent;
+
+
+
+  
+}
+
+a:hover{
+    
+    transition: .5s;
+    color:antiquewhite;
+    text-transform:lowercase;
+
+}
+
+
+
+/* Firstpage end */
+
+
+
+ 
