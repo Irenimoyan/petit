@@ -5,45 +5,265 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="firstpage.css">
-  <title>Login</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  
+  <title>PET.IT</title>
 </head>
 <body>
-  <header>
-    <img class="logo" src="./assets/logo2.png" alt="logo">
 
-      <ul class="navbar" id="top-nav">
-        <li><a href="#hero-area">HOME</a></li>
-        <li><a href="#about-us">ABOUT US</a></li>
-        <li><a href="#blog">BLOG</a></li>
-        <li><a href="#price">MENU</a></li>
-        <li><a href="#subscribe">NEWS</a></li>
-        <li><a href="#contact-us">CONTACTS</a></li>
-      </ul>
-  </header>
-  <div class="flexbox">
+   <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .fw-normal{
+        border-radius: 50%;
+      }
+
+      h1{
+        font-size: 500%;
+        font-family:Georgia, 'Times New Roman', Times, serif; 
+        color:#f5b106e3;     
+      }
+      p{
+        font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+      }
+
+    .bd-placeholder-img{
+      background: linear-gradient(to right, rgba(0,0,0,0.5), rgba(0,0,0,0.5));
+    }
+    </style>
+
     
-    <!-- <h2 class="header">
-      PET.IT
-    </h2> -->
-    <h1 class="header">
-     Get your dream pet at <br> your finger tips
-    </h1>
-
-    <img src="./assets/images (4).jfif" alt="">
-
-    <div class="form">
-      <button id="login"><a href="Login.html" >LogIn</a></button>
-      <button id="signup"><a href="./signup.html">Sign Up</a></button>
+    <!-- Custom styles for this template -->
+    <link href="carousel.css" rel="stylesheet">
+  </head>
+  <body>
+    
+<header>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="container-fluid">
+      <img src="./assets/logo.jpeg" width="4%" alt="">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="./Login.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./Login.html">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled">Disabled</a>
+          </li>
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
     </div>
-     <img src="./social-media-54/png-1024/facebook-761598.png" alt="">
-    <footer>
-      <h1>&copy;Irenimoyan 2023</h1>
-     
-    </footer>
-    
-  </div>
- 
-</body>
+  </nav>
+</header>
 
+<main>
+
+  <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+   
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="./The 15 Most Realistic Australian Shepherd and Border Collie Paintings.jfif" class="bd-placeholder-img" width="100%" height="100%" src="./assets/download (8).svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777" alt="">
+
+        <div class="container">
+          <div class="carousel-caption text-start">
+            <h1>PET.it</h1>
+            <p>get your favourite pet from us and be happy</p>
+            <p><a class="btn btn-lg btn-primary" href="./signup.html">Sign up today</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+          <img src="./assets/download (6).jfif" alt="" class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/>>
+        <div class="container">
+          <div class="carousel-caption">
+            <h1>Another example headline.</h1>
+            <p>Some representative placeholder content for the second slide of the carousel.</p>
+            <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="./assets/cat-British-Shorthair-grey.webp" class="bd-placeholder-img" width="100%" height="100%" src="./assets/download (8).svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777" alt="">
+
+        <div class="container">
+          <div class="carousel-caption text-end">
+            <h1>One more for good measure.</h1>
+            <p>Some representative placeholder content for the third slide of this carousel.</p>
+            <p><a class="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel"  data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+
+  <!-- Marketing messaging and featurettes
+  ================================================== -->
+  <!-- Wrap the rest of the page in another container to center all the content. -->
+
+  <div class="container marketing">
+
+    <!-- Three columns of text below the carousel -->
+    <div class="row">
+      <div class="col-lg-4">
+
+        <img src="./assets/cat-hair-growl-teeth-snarl.webp" width="70%" class="fw-normal" alt="">
+        <h2 class="fw-normal">Cat</h2>
+        <p>cats are the perfect pet. Intelligent, elegant, calming companions, capable of dealing with their own exercise and cleaning. To others, they are frustratingly independent, cool and aloof.</p>
+        <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <img src="./assets/corgy.webp" class="fw-normal" alt="">
+        <h2 class="fw-normal">Dog</h2>
+        <p>Dogs are sometimes referred to as man's best friend because they are kept as domestic pets and are usually loyal and like being around humans. They are also helpful in reducing stress,
+           anxiety, and depression, loneliness, encourage exercise and playfulness and even improve your cardiovascular health.</p>
+        <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <img src="./assets/white rabbit.webp" class="fw-normal" alt="">
+        <h2 class="fw-normal">Rabbit</h2>
+        <p>Rabbits are playful and inquisitive and require the stimulation of other rabbits or humans and their environment.
+           They are active animals that need to exercise and play regularly. 
+           Ensuring your rabbit is adequately stimulated is an important aspect of caring for your rabbit.</p>
+        <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
+      </div><!-- /.col-lg-4 -->
+    </div><!-- /.row -->
+
+
+    <!-- START THE FEATURETTES -->
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-heading fw-normal lh-1">First featurette heading. <span class="text-muted">It’ll blow your mind.</span></h2>
+        <p class="lead">Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+          Cumque adipisci amet harum. Sit illum rerum alias aspernatur mollitia! Expedita, sequi.</p>
+      </div>
+      <div class="col-md-5">
+        <img src="./assets/Norwegian-Forest-cat-tabby.webp" alt="">
+
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7 order-md-2">
+        <h2 class="featurette-heading fw-normal lh-1">Oh yeah, it’s that good. <span class="text-muted">See for yourself.</span></h2>
+        <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+           Quaerat delectus, similique doloremque accusamus earum debitis aliquid beatae dolorem aspernatur architecto!</p>
+      </div>
+      <div class="col-md-5 order-md-1">
+        <img src="./isolated-shot-ginger-cat-looking-retriever-dog-looking-camera-white-surface.jpg" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="600" height="600" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em" alt="">
+
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-heading fw-normal lh-1">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
+        <p class="lead">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorum sapiente sint,
+           numquam commodi nulla consequatur rem. Provident reiciendis soluta dolore!</p>
+      </div>
+      <div class="col-md-5">
+        <img src="./assets/Snowshoe-cat.webp" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em" alt="">
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <!-- /END THE FEATURETTES -->
+
+  </div><!-- /.container -->
+
+
+  <!-- FOOTER -->
+  <footer class="container">
+    <p class="float-end"><a href="#">Back to top</a></p>
+    <p>&copy; 2017–2023 Irenioyan, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+  </footer>
+</main>
+
+
+    <script src="../dist/js/bootstrap.bundle.min.js"></script>
+
+      
+</body>
+   
 
 </html>
