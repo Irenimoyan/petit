@@ -5,6 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="firstpage.css">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
   
   <title>PET.IT</title>
@@ -83,7 +84,7 @@
 
     
     <!-- Custom styles for this template -->
-    <link href="carousel.css" rel="stylesheet">
+    <link href="frontpage.css" rel="stylesheet">
   </head>
   <body>
     
@@ -97,13 +98,13 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="./Login.html">Home</a>
+            <a class="nav-link active" aria-current="page" href="" #>Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./Login.html">Link</a>
+            <a class="nav-link" href="#pet">Our pets</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled">Disabled</a>
+            <a class="nav-link" href="./Login.html">Log in</a>
           </li>
         </ul>
         <form class="d-flex" role="search">
@@ -130,14 +131,17 @@
 
         <div class="container">
           <div class="carousel-caption text-start">
-            <h1>PET.it</h1>
-            <p>get your favourite pet from us and be happy</p>
+            <h1>PET.IT</h1>
+            <p>Get your favourite pet from us and be happy</p>
             <p><a class="btn btn-lg btn-primary" href="./signup.html">Sign up today</a></p>
           </div>
         </div>
       </div>
       <div class="carousel-item">
-          <img src="./assets/download (6).jfif" alt="" class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/>>
+          <img src="isolated-shot-ginger-cat-looking-retriever-dog-looking-camera-white-surface.jpg" alt=""
+            class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+            preserveAspectRatio="xMidYMid slice" focusable="false">
+          <rect width="100%" height="100%" fill="#777" />>
         <div class="container">
           <div class="carousel-caption">
             <h1>Another example headline.</h1>
@@ -167,7 +171,7 @@
       <span class="visually-hidden">Next</span>
     </button>
   </div>
-
+<hr><br><br>
 
   <!-- Marketing messaging and featurettes
   ================================================== -->
@@ -175,33 +179,53 @@
 
   <div class="container marketing">
 
+  <a href="#pet" id="pet"></a>
+  <h1 class="text-center text-body-secondary mb-5 mt-1">Our Pets</h1>
+
+
     <!-- Three columns of text below the carousel -->
-    <div class="row">
-      <div class="col-lg-4">
-
-        <img src="./assets/cat-hair-growl-teeth-snarl.webp" width="70%" class="fw-normal" alt="">
-        <h2 class="fw-normal">Cat</h2>
-        <p>cats are the perfect pet. Intelligent, elegant, calming companions, capable of dealing with their own exercise and cleaning. To others, they are frustratingly independent, cool and aloof.</p>
-        <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
-      </div><!-- /.col-lg-4 -->
-      <div class="col-lg-4">
-        <img src="./assets/corgy.webp" class="fw-normal" alt="">
-        <h2 class="fw-normal">Dog</h2>
-        <p>Dogs are sometimes referred to as man's best friend because they are kept as domestic pets and are usually loyal and like being around humans. They are also helpful in reducing stress,
-           anxiety, and depression, loneliness, encourage exercise and playfulness and even improve your cardiovascular health.</p>
-        <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
-      </div><!-- /.col-lg-4 -->
-      <div class="col-lg-4">
-        <img src="./assets/white rabbit.webp" class="fw-normal" alt="">
-        <h2 class="fw-normal">Rabbit</h2>
-        <p>Rabbits are playful and inquisitive and require the stimulation of other rabbits or humans and their environment.
-           They are active animals that need to exercise and play regularly. 
-           Ensuring your rabbit is adequately stimulated is an important aspect of caring for your rabbit.</p>
-        <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
-      </div><!-- /.col-lg-4 -->
-    </div><!-- /.row -->
-
-
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <div class="col">
+        <div class="card h-100">
+          <img src="assets/corgy.webp" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Corgy</h5>
+            <p class="card-text">$150</p>
+            <p><a class="btn btn-lg btn-primary" href="#">Add to Chart</a></p>
+          </div>
+          <div class="card-footer">
+            <small class="text-body-secondary">Last updated 3 mins ago</small>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <img src="assets/cat-hair-growl-teeth-snarl.webp" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Hair-growl-teeth-snarl</h5>
+            <p class="card-text">$200</p>
+            <p><a class="btn btn-lg btn-primary" href="#">Add to Chart</a></p>
+          </div>
+          <div class="card-footer">
+            <small class="text-body-secondary">Last updated 3 mins ago</small>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <img src="assets/white rabbit.webp" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Snow White Rabbit</h5>
+            <p class="card-text">$150</p>
+            <p><a class="btn btn-lg btn-primary" href="#">Add to Chart</a></p>
+          </div>
+          <div class="card-footer">
+            <small class="text-body-secondary">Last updated 3 mins ago</small>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p><a class="btn btn-lg btn-primary" id="more" href="#">More Pets &#8594</a></p>
     <!-- START THE FEATURETTES -->
 
     <hr class="featurette-divider">
@@ -260,7 +284,7 @@
 </main>
 
 
-    <script src="../dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
 
       
 </body>
