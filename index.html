@@ -1,293 +1,1125 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="firstpage.css">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
   
-  <title>PET.IT</title>
+  <!-- SEO & OpenGraph Meta Tags -->
+  <title>PET.IT Luxury Pet Boutique & Ethical Adoption Platform</title>
+  <meta name="description"
+    content="Discover healthy, vaccinated, and ethically-raised companion pets and luxury pet supplies at PET.IT. Corgis, British Shorthairs, Bunnies, smart pet tech, and spa grooming.">
+  <meta name="keywords"
+    content="pet store, buy puppy, adopt cat, corgi, british shorthair, pet adoption, pet grooming, luxury pet supplies">
+  <meta name="author" content="PET.IT Luxury Pet Boutique">
+  
+  <!-- Bootstrap Icons & Fonts -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  
+  <!-- Core Design System CSS -->
+  <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
 
-   <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
+  <!-- =========================================================================
+       1. STICKY GLASS NAVBAR & MOBILE DRAWER
+       ========================================================================= -->
+  <header class="header-nav">
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-icon">🐾</div>
+        <span>PET<span class="dot">.</span>IT</span>
+      </a>
 
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
+      <ul class="nav-links">
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="#catalog" class="nav-link">Companions & Store</a></li>
+        <li><a href="#quiz" class="nav-link">Pet Match Quiz</a></li>
+        <li><a href="#services" class="nav-link">Spa & Vet Services</a></li>
+        <li><a href="#adoption-process" class="nav-link">Adoption Story</a></li>
+        <li><a href="#reviews" class="nav-link">Reviews</a></li>
+      </ul>
 
-      .b-example-divider {
-        height: 3rem;
-        background-color: rgba(0, 0, 0, .1);
-        border: solid rgba(0, 0, 0, .15);
-        border-width: 1px 0;
-        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-      }
+      <div class="nav-actions">
+        <!-- Live Header Search -->
+        <div class="nav-search-bar">
+          <i class="bi bi-search nav-search-icon"></i>
+          <input type="text" id="navSearchInput" class="nav-search-input" placeholder="Search pets, breeds, diets...">
+        </div>
 
-      .b-example-vr {
-        flex-shrink: 0;
-        width: 1.5rem;
-        height: 100vh;
-      }
+        <!-- Wishlist Button -->
+        <button class="btn-icon" style="position: relative;" onclick="location.href='#catalog'" title="Your Wishlist">
+          <i class="bi bi-heart"></i>
+          <span id="wishlistCountBadge" class="badge-counter" style="display: none;">0</span>
+        </button>
 
-      .bi {
-        vertical-align: -.125em;
-        fill: currentColor;
-      }
+        <!-- Cart Drawer Toggle Button -->
+        <button class="btn-icon" style="position: relative;" onclick="toggleCartDrawer()" title="Shopping Cart">
+          <i class="bi bi-bag"></i>
+          <span class="cart-badge-count badge-counter" style="display: none;">0</span>
+        </button>
 
-      .nav-scroller {
-        position: relative;
-        z-index: 2;
-        height: 2.75rem;
-        overflow-y: hidden;
-      }
+        <!-- Dark / Light Theme Toggle -->
+        <button id="themeToggleBtn" class="btn-icon" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
+          <i class="bi bi-moon-stars-fill"></i>
+        </button>
 
-      .nav-scroller .nav {
-        display: flex;
-        flex-wrap: nowrap;
-        padding-bottom: 1rem;
-        margin-top: -1px;
-        overflow-x: auto;
-        text-align: center;
-        white-space: nowrap;
-        -webkit-overflow-scrolling: touch;
-      }
+        <!-- Account / Login Button -->
+        <button id="accountBtn" class="btn btn-secondary btn-sm" style="border-radius: var(--radius-full);">
+          <i class="bi bi-person-fill"></i> Sign In
+        </button>
 
-      .fw-normal{
-        border-radius: 50%;
-      }
+        <!-- Mobile Hamburger Menu Button -->
+        <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" title="Open Navigation Menu">
+          <i class="bi bi-list"></i>
+        </button>
+      </div>
+    </div>
+  </header>
 
-      h1{
-        font-size: 500%;
-        font-family:Georgia, 'Times New Roman', Times, serif; 
-        color:#f5b106e3;     
-      }
-      p{
-        font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-      }
+  <!-- Mobile Navigation Drawer Overlay -->
+  <div id="mobileNavBackdrop" class="mobile-nav-backdrop" onclick="if(event.target===this) toggleMobileMenu();">
+    <div class="mobile-nav-drawer">
+      <div class="mobile-nav-header">
+        <a href="index.html" class="brand-logo" onclick="toggleMobileMenu()">
+          <div class="logo-icon">🐾</div>
+          <span>PET<span class="dot">.</span>IT</span>
+        </a>
+        <button class="btn-icon" onclick="toggleMobileMenu()"><i class="bi bi-x-lg"></i></button>
+      </div>
+      <ul class="mobile-nav-links">
+        <li><a href="#home" onclick="toggleMobileMenu()"><i class="bi bi-house-door"></i> Home</a></li>
+        <li><a href="#catalog" onclick="toggleMobileMenu()"><i class="bi bi-grid"></i> Companions & Store</a></li>
+        <li><a href="#quiz" onclick="toggleMobileMenu()"><i class="bi bi-stars"></i> Pet Match Quiz</a></li>
+        <li><a href="#services" onclick="toggleMobileMenu()"><i class="bi bi-heart-pulse"></i> Spa & Vet Care</a></li>
+        <li><a href="#adoption-process" onclick="toggleMobileMenu()"><i class="bi bi-shield-check"></i> Adoption Process</a></li>
+        <li><a href="#reviews" onclick="toggleMobileMenu()"><i class="bi bi-chat-heart"></i> Verified Reviews</a></li>
+      </ul>
+      <div style="display: flex; flex-direction: column; gap: 0.8rem; margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--border-color);">
+        <button id="mobileThemeToggleBtn" class="btn btn-secondary" onclick="toggleTheme()" style="width: 100%;">
+          <i class="bi bi-moon-stars-fill"></i> Toggle Theme
+        </button>
+        <button id="mobileAccountBtn" class="btn btn-primary" style="width: 100%;">
+          <i class="bi bi-person-fill"></i> Sign In / Register
+        </button>
+      </div>
+    </div>
+  </div>
 
-    .bd-placeholder-img{
-      background: linear-gradient(to right, rgba(0,0,0,0.5), rgba(0,0,0,0.5));
-    }
-    </style>
+  <!-- =========================================================================
+             2. HERO SECTION
+             ========================================================================= -->
+  <section id="home" class="hero-section">
+    <div class="hero-backdrop-glow"></div>
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="hero-tag">
+            <span class="live-dot"></span>
+            <span>Ethically Raised & 100% Certified Health Screening</span>
+          </div>
 
-    
-    <!-- Custom styles for this template -->
-    <link href="frontpage.css" rel="stylesheet">
-  </head>
-  <body>
-    
-<header>
-  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <div class="container-fluid">
-      <img src="./assets/logo.jpeg" width="4%" alt="">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+          <h1 class="hero-title">
+            Where Pure Love Finds Its <span class="gradient-text">Forever Home.</span>
+          </h1>
+
+          <p class="hero-desc">
+            Welcome to PET.IT, your premier boutique for ethically raised companion pets, veterinary-grade nutrition, and bespoke
+            pet lifestyle accessories.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#catalog" class="btn btn-primary btn-lg">
+              <i class="bi bi-heart-half"></i> Explore Companions
+            </a>
+            <a href="#quiz" class="btn btn-secondary btn-lg">
+              <i class="bi bi-stars"></i> Take Pet Match Quiz
+            </a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat-item">
+              <h3>5,400+</h3>
+              <p>Happy Adoptions</p>
+            </div>
+            <div class="stat-item">
+              <h3>100%</h3>
+              <p>Health Certified</p>
+            </div>
+            <div class="stat-item">
+              <h3>4.9 ★</h3>
+              <p>Verified Rating</p>
+            </div>
+          </div>
+          </div>
+          <div class="hero-visual">
+            <div class="floating-badge floating-badge-1">
+              <div class="badge-icon amber">
+                <i class="bi bi-shield-check"></i>
+              </div>
+              <div>
+                <div class="badge-text-title">Vaccinated & Microchipped</div>
+                <div class="badge-text-sub">Full Vet Passport Included</div>
+              </div>
+            </div>
+            <div class="hero-main-card">
+              <img src="assets/corgy.webp" alt="Sir Winston Corgi" onerror="this.src='assets/logo.jpeg'">
+              <div class="hero-card-overlay">
+                <h4>Sir Winston & Friends</h4>
+                <p>Pembroke Welsh Corgi • 4 Months Old • Ready For Adoption</p>
+              </div>
+            </div>
+            
+            <div class="floating-badge floating-badge-2">
+              <div class="badge-icon green">
+                <i class="bi bi-truck"></i>
+              </div>
+              <div>
+                <div class="badge-text-title">Comfort Climate Transport</div>
+                <div class="badge-text-sub">Door-to-Door Safe Handover</div>
+              </div>
+            </div>
+            </div>
+            
+            </div>
+            </div>
+            </section>
+            
+            <!-- =========================================================================
+                                       3. CATEGORIES & LIVE CATALOG STOREFRONT
+                                       ========================================================================= -->
+            <section id="catalog" class="section-padding">
+              <div class="container">
+                <div class="section-title-wrap">
+                  <span class="section-badge"><i class="bi bi-grid-fill"></i> Curated Catalog</span>
+                  <h2 class="section-title">Meet Your Future Companion</h2>
+                  <p class="section-subtitle">Browse through our healthy, socialized pets and luxury accessories. Every pet is fully
+                    examined by licensed veterinarians.</p>
+                </div>
+            
+    <!-- Category Filter Pills -->
+    <div class="category-pills-wrap">
+      <button class="category-pill active" data-category="all">
+        <i class="bi bi-collection-fill"></i> All Companions & Gear
       </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav me-auto mb-2 mb-md-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="" #>Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#pet">Our pets</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="./Login.html">Log in</a>
-          </li>
-        </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
+      <button class="category-pill" data-category="dogs">
+        <i class="bi bi-emoji-smile"></i> Puppies & Dogs
+      </button>
+      <button class="category-pill" data-category="cats">
+        <i class="bi bi-flower1"></i> Kittens & Cats
+      </button>
+      <button class="category-pill" data-category="rabbits">
+        <i class="bi bi-suit-heart"></i> Fluffy Bunnies
+      </button>
+      <button class="category-pill" data-category="livestock">
+        <i class="bi bi-shield-shaded"></i> Farmstead & Heritage
+      </button>
+      <button class="category-pill" data-category="exotic">
+        <i class="bi bi-feather"></i> Waterfowl & Exotic
+      </button>
+      <button class="category-pill" data-category="supplies">
+        <i class="bi bi-box-seam"></i> Luxury Supplies & Tech
+      </button>
+    </div>
+
+    <!-- Habitat Filter Chips -->
+    <div class="habitat-filter-bar">
+      <span style="font-size: 0.82rem; font-weight: 700; color: var(--text-muted); margin-right: 0.4rem;">
+        <i class="bi bi-funnel-fill"></i> Habitat:
+      </span>
+      <button class="habitat-chip active" data-habitat="all">
+        All Habitats
+      </button>
+      <button class="habitat-chip" data-habitat="indoor">
+        🏢 Indoor Apartment
+      </button>
+      <button class="habitat-chip" data-habitat="yard">
+        🏡 Backyard / Garden
+      </button>
+      <button class="habitat-chip" data-habitat="pasture">
+        🌾 Pasture / Farmstead
+      </button>
+    </div>
+<!-- Filter Toolbar -->
+<div class="filter-toolbar">
+  <div class="filter-left">
+    <div class="nav-search-bar" style="width: 280px;">
+      <i class="bi bi-search nav-search-icon"></i>
+      <input type="text" id="catalogSearchInput" class="nav-search-input" style="width: 100%;"
+        placeholder="Filter by name, breed, diet...">
+          </div>
+        </div>
+
+        <div class="filter-right">
+          <span id="catalogCountBadge" class="filter-count">Loading catalog...</span>
+          <select id="catalogSortSelect" class="filter-select">
+            <option value="featured">Sort: Featured</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+            <option value="rating">Highest Rated</option>
+          </select>
+        </div>
+        </div>
+
+      <!-- Product / Pet Catalog Grid -->
+      <div id="productCatalogGrid" class="product-grid">
+        <!-- Rendered dynamically by js/app.js -->
+      </div>
+      </div>
+      </section>
+
+  <!-- =========================================================================
+             4. PET OF THE WEEK SPOTLIGHT
+             ========================================================================= -->
+  <section class="container">
+    <div class="spotlight-section">
+      <div class="spotlight-grid">
+        <div class="spotlight-image-frame">
+          <img src="assets/cat-British-Shorthair-grey.webp" alt="Duchess Luna"
+            style="width: 100%; height: 380px; object-fit: cover;">
+          <span class="spotlight-badge"><i class="bi bi-trophy-fill"></i> Pet of the Week Spotlight</span>
+        </div>
+
+        <div>
+          <span class="section-badge"
+            style="background: rgba(244, 63, 94, 0.12); color: var(--accent-rose); border-color: rgba(244, 63, 94, 0.3);">
+            <i class="bi bi-gem"></i> Exceptional Pedigree
+          </span>
+          <h2 style="font-size: 2.3rem; margin: 0.8rem 0 1rem;">Meet Duchess Luna</h2>
+          <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">
+            Luna is a 6-month-old British Shorthair with a plush velvet slate-blue coat and mesmerizing amber eyes. She is
+            exceptionally affectionate, litter-trained, calm around guests, and loves curling up next to you during movie
+            nights.
+          </p>
+        
+          <div style="display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap;">
+            <div
+              style="background: var(--bg-surface); padding: 0.6rem 1.2rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+              <span style="font-size: 0.75rem; color: var(--text-muted); display: block;">Temperament</span>
+              <strong>Calm & Gentle</strong>
+            </div>
+            <div
+              style="background: var(--bg-surface); padding: 0.6rem 1.2rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+              <span style="font-size: 0.75rem; color: var(--text-muted); display: block;">Health Check</span>
+              <strong style="color: var(--secondary);">100% Passed</strong>
+            </div>
+            <div
+              style="background: var(--bg-surface); padding: 0.6rem 1.2rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+              <span style="font-size: 0.75rem; color: var(--text-muted); display: block;">Adoption Fee</span>
+              <strong style="color: var(--primary); font-size: 1.1rem;">$420</strong>
+            </div>
+          </div>
+        
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <button class="btn btn-primary btn-lg" onclick="openQuickView('pet-2')">
+              <i class="bi bi-heart-half"></i> Apply to Adopt Luna
+            </button>
+            <button class="btn btn-secondary btn-lg" onclick="openBookingModal('Meet & Greet with Duchess Luna')">
+              <i class="bi bi-calendar-heart"></i> Schedule Meet & Greet
+            </button>
+          </div>
+        </div>
+        </div>
+        </div>
+        </section>
+        
+        <!-- =========================================================================
+                               5. INTERACTIVE "FIND YOUR PERFECT MATCH" QUIZ
+                               ========================================================================= -->
+        <section id="quiz" class="section-padding" style="background: var(--bg-muted);">
+    <div class="container">
+      <div class="section-title-wrap">
+        <span class="section-badge"><i class="bi bi-magic"></i> AI Pet Matchmaker</span>
+        <h2 class="section-title">Find Your Perfect Companion Match</h2>
+        <p class="section-subtitle">Answer 3 quick questions about your home environment and lifestyle to discover your dream
+          pet.</p>
+      </div>
+      
+      <div class="quiz-card-container">
+        <!-- Progress Bar -->
+        <div class="quiz-progress-bar">
+          <div id="quizProgressFill" class="quiz-progress-fill"></div>
+        </div>
+      
+        <!-- Question 1 -->
+        <div id="quizQuestion1">
+          <h3 style="font-size: 1.5rem; text-align: center; margin-bottom: 0.5rem;">Question 1: What type of living space do
+            you have?</h3>
+          <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem;">Select the option that best describes
+            your home:</p>
+      
+          <div class="quiz-options-grid">
+            <div class="quiz-option-card" data-value="apartment" onclick="answerQuiz('apartment', 1)">
+              <div class="quiz-option-icon">🏢</div>
+              <h4>Cozy Apartment / Condo</h4>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.4rem;">Compact indoor space without
+                private yard</p>
+            </div>
+      
+            <div class="quiz-option-card" data-value="house" onclick="answerQuiz('house', 1)">
+              <div class="quiz-option-icon">🏡</div>
+              <h4>House with Fenced Yard</h4>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.4rem;">Spacious living area with
+                outdoor playtime</p>
+            </div>
+      
+            <div class="quiz-option-card" data-value="country" onclick="answerQuiz('country', 1)">
+              <div class="quiz-option-icon">🌾</div>
+              <h4>Rural Estate / Farm</h4>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.4rem;">Expansive outdoor territory and
+                acreage</p>
+            </div>
+          </div>
+        </div>
+      
+        <!-- Question 2 -->
+        <div id="quizQuestion2" style="display: none;">
+          <h3 style="font-size: 1.5rem; text-align: center; margin-bottom: 0.5rem;">Question 2: What is your preferred
+            activity & energy level?</h3>
+          <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem;">How active would you like your
+            companion to be?</p>
+      
+          <div class="quiz-options-grid">
+            <div class="quiz-option-card" data-value="relaxed" onclick="answerQuiz('relaxed', 2)">
+              <div class="quiz-option-icon">🛋️</div>
+              <h4>Relaxed & Chill</h4>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.4rem;">Loves cuddles, indoor naps, low
+                exercise demand</p>
+            </div>
+      
+            <div class="quiz-option-card" data-value="moderate" onclick="answerQuiz('moderate', 2)">
+              <div class="quiz-option-icon">🚶</div>
+              <h4>Moderate Daily Walks</h4>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.4rem;">Enjoys daily 30-min strolls and
+                playful energy</p>
+            </div>
+      
+            <div class="quiz-option-card" data-value="high" onclick="answerQuiz('high', 2)">
+              <div class="quiz-option-icon">🏃</div>
+              <h4>High Energy & Hiking</h4>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.4rem;">Adventure companion for jogging
+                and long trails</p>
+            </div>
+          </div>
+        </div>
+      
+        <!-- Question 3 -->
+        <div id="quizQuestion3" style="display: none;">
+          <h3 style="font-size: 1.5rem; text-align: center; margin-bottom: 0.5rem;">Question 3: What is your pet parenting
+            experience level?</h3>
+          <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem;">Helps us match appropriate companion
+            temperament:</p>
+      
+          <div class="quiz-options-grid">
+            <div class="quiz-option-card" data-value="first-time" onclick="answerQuiz('first-time', 3)">
+              <div class="quiz-option-icon">🌱</div>
+              <h4>First-Time Pet Parent</h4>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.4rem;">Looking for an easy-going,
+                gentle first companion</p>
+            </div>
+      
+            <div class="quiz-option-card" data-value="experienced" onclick="answerQuiz('experienced', 3)">
+              <div class="quiz-option-icon">⭐</div>
+              <h4>Experienced Pet Owner</h4>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.4rem;">Experienced in positive
+                training and breed care</p>
+            </div>
+          </div>
+        </div>
+      
+        <!-- Dynamic Result Container -->
+        <div id="quizResultContainer" style="display: none;"></div>
+      
+      </div>
+      </div>
+      </section>
+      
+      <!-- =========================================================================
+                         6. PET CARE & LUXURY SERVICES
+                         ========================================================================= -->
+      <section id="services" class="section-padding">
+        <div class="container">
+          <div class="section-title-wrap">
+            <span class="section-badge"><i class="bi bi-heart-pulse-fill"></i> Holistic Pet Care</span>
+            <h2 class="section-title">Luxury Services & Spa Retreat</h2>
+            <p class="section-subtitle">Keep your pets healthy, pampered, and happy with our certified veterinarians and
+              master pet stylists.</p>
+          </div>
+      
+          <div class="services-grid">
+            <div class="service-card">
+              <div class="service-icon-box">🛁</div>
+              <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Luxury Hydro-Bath & Grooming Spa</h3>
+              <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1;">
+                Organic essential oil baths, ultrasonic tooth scaling, breed-specific styled trims, and paw-pad balm
+                treatment.
+              </p>
+              <div
+                style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-color); padding-top: 1rem;">
+                <strong style="color: var(--primary); font-size: 1.2rem;">From $65</strong>
+                <button class="btn btn-outline btn-sm" onclick="openBookingModal('Luxury Hydro-Bath & Grooming Spa')">Book
+                  Spa</button>
+              </div>
+            </div>
+      
+            <div class="service-card">
+              <div class="service-icon-box">🩺</div>
+              <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">24/7 Vet Telehealth & Clinic Care</h3>
+              <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1;">
+                Direct video consultations with board-certified veterinarians, annual vaccination plans, and wellness
+                screenings.
+              </p>
+              <div
+                style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-color); padding-top: 1rem;">
+                <strong style="color: var(--primary); font-size: 1.2rem;">From $45</strong>
+                <button class="btn btn-outline btn-sm" onclick="openBookingModal('Veterinary Wellness Consultation')">Book
+                  Vet</button>
+              </div>
+            </div>
+      
+            <div class="service-card">
+              <div class="service-icon-box">🎓</div>
+              <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Puppy & Adult Academy Training</h3>
+              <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1;">
+                Positive reinforcement behavioral mastery, leash manners, socialization workshops, and agility foundations.
+              </p>
+              <div
+                style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-color); padding-top: 1rem;">
+                <strong style="color: var(--primary); font-size: 1.2rem;">From $120</strong>
+                <button class="btn btn-outline btn-sm" onclick="openBookingModal('Puppy & Adult Academy Training')">Book
+                  Training</button>
+              </div>
+            </div>
+      
+            <div class="service-card">
+              <div class="service-icon-box">🏨</div>
+              <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">5-Star Pet Hotel & Daycare Resort</h3>
+              <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1;">
+                Climate-controlled suites, webcam room access, daily enrichment playgroups, and bedtime story cuddle sessions.
+              </p>
+              <div
+                style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-color); padding-top: 1rem;">
+                <strong style="color: var(--primary); font-size: 1.2rem;">$50 / Night</strong>
+                <button class="btn btn-outline btn-sm" onclick="openBookingModal('5-Star Pet Hotel & Daycare')">Reserve
+                  Suite</button>
+              </div>
+            </div>
+          </div>
+        </div>
+  </section>
+  
+  <!-- =========================================================================
+             7. 4-STEP ETHICAL ADOPTION TIMELINE
+             ========================================================================= -->
+  <section id="adoption-process" class="section-padding"
+    style="background: var(--bg-surface-elevated); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+    <div class="container">
+      <div class="section-title-wrap">
+        <span class="section-badge"><i class="bi bi-shield-check"></i> Certified Standards</span>
+        <h2 class="section-title">How Ethical Adoption Works</h2>
+        <p class="section-subtitle">Our 4-step streamlined process ensures our pets go to loving forever homes with full
+          health guarantees.</p>
+      </div>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2rem;">
+        <div style="text-align: center; padding: 1.5rem;">
+          <div
+            style="width: 54px; height: 54px; border-radius: 50%; background: var(--primary); color: #fff; font-weight: 800; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.2rem; font-size: 1.2rem;">
+            1</div>
+          <h4>Browse & Select</h4>
+          <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.5rem;">Explore detailed temperament tags,
+            health certificates, and video introductions.</p>
+        </div>
+      
+        <div style="text-align: center; padding: 1.5rem;">
+          <div
+            style="width: 54px; height: 54px; border-radius: 50%; background: var(--primary); color: #fff; font-weight: 800; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.2rem; font-size: 1.2rem;">
+            2</div>
+          <h4>Meet & Match</h4>
+          <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.5rem;">Join a virtual or in-person Meet &
+            Greet to ensure harmonious lifestyle compatibility.</p>
+        </div>
+      
+        <div style="text-align: center; padding: 1.5rem;">
+          <div
+            style="width: 54px; height: 54px; border-radius: 50%; background: var(--primary); color: #fff; font-weight: 800; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.2rem; font-size: 1.2rem;">
+            3</div>
+          <h4>Vet Health Check</h4>
+          <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.5rem;">Receive complete vaccination
+            records, microchip ID registration, and health insurance warranty.</p>
+        </div>
+      
+        <div style="text-align: center; padding: 1.5rem;">
+          <div
+            style="width: 54px; height: 54px; border-radius: 50%; background: var(--primary); color: #fff; font-weight: 800; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.2rem; font-size: 1.2rem;">
+            4</div>
+          <h4>Safe Welcome Home</h4>
+          <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.5rem;">Take home your starter care kit and
+            companion with climate-controlled delivery options.</p>
+        </div>
+      </div>
+      </div>
+  </section>
+
+  <!-- =========================================================================
+             8. VERIFIED CUSTOMER REVIEWS & TESTIMONIALS
+             ========================================================================= -->
+  <section id="reviews" class="section-padding">
+    <div class="container">
+      <div class="section-title-wrap">
+        <span class="section-badge"><i class="bi bi-chat-heart-fill"></i> Community Love</span>
+        <h2 class="section-title">Loved by 5,000+ Pet Parents</h2>
+        <p class="section-subtitle">Real stories from families whose lives were transformed by their PET.IT companions.</p>
+      </div>
+      
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div style="color: #f59e0b; font-size: 1.1rem; margin-bottom: 0.8rem;">
+            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+              class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+          </div>
+          <p style="color: var(--text-secondary); line-height: 1.6; font-style: italic; flex-grow: 1;">
+            "Adopting our Corgi puppy from PET.IT was the most seamless and reassuring experience. The health passport was
+            fully verified by our vet, and he came potty trained and joyful!"
+          </p>
+          <div class="review-author">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80"
+              alt="Sarah Jenkins" class="review-avatar">
+            <div>
+              <strong style="display: block; font-size: 0.95rem;">Sarah & David Jenkins</strong>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">Adopted Sir Winston (Corgi)</span>
+            </div>
+          </div>
+        </div>
+      
+        <div class="review-card">
+          <div style="color: #f59e0b; font-size: 1.1rem; margin-bottom: 0.8rem;">
+            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+              class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+          </div>
+          <p style="color: var(--text-secondary); line-height: 1.6; font-style: italic; flex-grow: 1;">
+            "The British Shorthair kitten we received is breathtakingly beautiful and sweet. Customer support helped us with
+            raw food recommendations and the smart feeder. 10/10 service!"
+          </p>
+          <div class="review-author">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80"
+              alt="Marcus Sterling" class="review-avatar">
+            <div>
+              <strong style="display: block; font-size: 0.95rem;">Marcus Sterling</strong>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">Adopted Luna (British Shorthair)</span>
+            </div>
+          </div>
+        </div>
+      
+        <div class="review-card">
+          <div style="color: #f59e0b; font-size: 1.1rem; margin-bottom: 0.8rem;">
+            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+              class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+          </div>
+          <p style="color: var(--text-secondary); line-height: 1.6; font-style: italic; flex-grow: 1;">
+            "The Grooming Spa is top notch. My German Shepherd always comes out smelling incredible with a silky coat. The
+            staff truly treats every pet like royal family."
+          </p>
+          <div class="review-author">
+            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=120&q=80"
+              alt="Elena Rostova" class="review-avatar">
+            <div>
+              <strong style="display: block; font-size: 0.95rem;">Elena Rostova</strong>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">Grooming Spa Regular Member</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+  </section>
+  
+  <!-- =========================================================================
+             9. NEWSLETTER & VIP CLUB
+             ========================================================================= -->
+  <section class="container" style="margin-bottom: 5rem;">
+    <div
+      style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); border-radius: var(--radius-xl); padding: 4rem 3rem; color: #fff; text-align: center; position: relative; overflow: hidden;">
+      <span class="section-badge"
+        style="background: rgba(245, 158, 11, 0.2); color: #f59e0b; border-color: rgba(245, 158, 11, 0.4);">
+        <i class="bi bi-gift-fill"></i> VIP Pet Parents Club
+      </span>
+      <h2 style="font-size: 2.4rem; color: #fff; margin: 1rem 0 0.8rem;">Get 10% Off Your First Order</h2>
+      <p style="color: #94a3b8; max-width: 520px; margin: 0 auto 2rem;">Subscribe to our weekly care tips, new pet
+        arrivals alerts, and receive promo code <strong>PETIT10</strong> instantly.</p>
+  
+      <form
+        onsubmit="event.preventDefault(); showToast('Subscribed! 🎉', 'Welcome to the VIP Club! Use promo PETIT10 for 10% off.', 'success');"
+        style="max-width: 480px; margin: 0 auto; display: flex; gap: 0.6rem; flex-wrap: wrap;">
+        <input type="email" placeholder="Enter your email address..." required
+          style="flex-grow: 1; padding: 0.85rem 1.4rem; border-radius: var(--radius-full); border: 1px solid rgba(255, 255, 255, 0.2); background: rgba(255, 255, 255, 0.08); color: #fff; font-size: 0.95rem;">
+        <button type="submit" class="btn btn-primary" style="padding: 0.85rem 1.8rem;">Join Club</button>
+      </form>
+    </div>
+  </section>
+  
+  <!-- =========================================================================
+             10. FOOTER
+             ========================================================================= -->
+  <footer style="background: var(--bg-surface); border-top: 1px solid var(--border-color); padding: 4rem 0 2rem;">
+    <div class="container">
+      <div
+        style="display: grid; grid-template-columns: 1.5fr repeat(auto-fit, minmax(180px, 1fr)); gap: 3rem; margin-bottom: 3.5rem;">
+        <div>
+          <a href="index.html" class="brand-logo" style="margin-bottom: 1.2rem;">
+            <div class="logo-icon">🐾</div>
+            <span>PET<span class="dot">.</span>IT</span>
+          </a>
+          <p style="color: var(--text-secondary); font-size: 0.92rem; max-width: 320px; margin-bottom: 1.5rem;">
+            Setting the highest gold standard in ethical companion breeding, pet wellness, and luxury lifestyle
+            accessories.
+          </p>
+          <div style="display: flex; gap: 0.75rem;">
+            <a href="#" class="btn-icon"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="btn-icon"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="btn-icon"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" class="btn-icon"><i class="bi bi-tiktok"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h4 style="font-size: 1.05rem; margin-bottom: 1.2rem;">Companions</h4>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.6rem; font-size: 0.9rem;">
+            <li><a href="#catalog" style="color: var(--text-secondary);">Corgi Puppies</a></li>
+            <li><a href="#catalog" style="color: var(--text-secondary);">British Shorthair</a></li>
+            <li><a href="#catalog" style="color: var(--text-secondary);">German Shepherds</a></li>
+            <li><a href="#catalog" style="color: var(--text-secondary);">Holland Lop Bunnies</a></li>
+            <li><a href="#catalog" style="color: var(--text-secondary);">Exotic Waterfowl</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 style="font-size: 1.05rem; margin-bottom: 1.2rem;">Care & Spa</h4>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.6rem; font-size: 0.9rem;">
+            <li><a href="#services" style="color: var(--text-secondary);">Hydro-Bath Spa</a></li>
+            <li><a href="#services" style="color: var(--text-secondary);">24/7 Vet Telehealth</a></li>
+            <li><a href="#services" style="color: var(--text-secondary);">Puppy Academy</a></li>
+            <li><a href="#services" style="color: var(--text-secondary);">Pet Hotel Suites</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 style="font-size: 1.05rem; margin-bottom: 1.2rem;">Contact & Visit</h4>
+          <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 0.8rem;">
+            <i class="bi bi-geo-alt-fill" style="color: var(--primary);"></i> 19 Olatunji Street, Victoria Island<br>
+            <i class="bi bi-telephone-fill" style="color: var(--primary);"></i> +234 708 723 2716<br>
+            <i class="bi bi-envelope-fill" style="color: var(--primary);"></i> care@petitluxury.com
+          </p>
+          <span
+            style="display: inline-block; font-size: 0.8rem; background: var(--secondary-light); color: var(--secondary); padding: 0.2rem 0.6rem; border-radius: var(--radius-full); font-weight: 700;">
+            Open Mon-Sun 8AM - 8PM
+          </span>
+        </div>
+        </div>
+
+      <div
+        style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-color); padding-top: 2rem; font-size: 0.88rem; color: var(--text-muted); flex-wrap: wrap; gap: 1rem;">
+        <p>&copy; 2026 PET.IT Luxury Pet Boutique. All Rights Reserved.</p>
+        <div style="display: flex; gap: 1.5rem;">
+          <a href="#" style="color: var(--text-muted);">Privacy Policy</a>
+          <a href="#" style="color: var(--text-muted);">Adoption Terms</a>
+          <a href="#" style="color: var(--text-muted);">Health Guarantee</a>
+        </div>
+      </div>
+      </div>
+      </footer>
+
+  <!-- =========================================================================
+             11. SLIDE-OVER SHOPPING CART DRAWER
+             ========================================================================= -->
+  <div id="cartDrawerBackdrop" class="cart-drawer-backdrop" onclick="if(event.target===this) toggleCartDrawer();">
+    <div class="cart-drawer">
+      <div class="cart-drawer-header">
+        <h3 style="font-size: 1.25rem; display: flex; align-items: center; gap: 0.5rem;">
+          <i class="bi bi-bag-heart-fill" style="color: var(--primary);"></i> Your Cart & Adoptions
+        </h3>
+        <button class="btn-icon" onclick="toggleCartDrawer()"><i class="bi bi-x-lg"></i></button>
+      </div>
+<div id="cartDrawerList" class="cart-drawer-body">
+  <!-- Rendered by js/app.js -->
+</div>
+<div class="cart-drawer-footer">
+  <div style="margin-bottom: 1.2rem; display: flex; gap: 0.5rem;">
+    <input type="text" id="promoCodeInput" placeholder="Promo code (e.g. PETIT10)"
+      style="flex-grow: 1; padding: 0.5rem 0.9rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); font-size: 0.85rem; text-transform: uppercase;">
+    <button class="btn btn-secondary btn-sm" onclick="applyPromoCode()">Apply</button>
+        </div>
+<div class="cart-summary-row">
+  <span>Subtotal</span>
+  <span id="cartDrawerSubtotal" style="font-weight: 700;">$0.00</span>
+        </div>
+        <div id="cartDrawerDiscountRow" class="cart-summary-row" style="display: none; color: var(--secondary);">
+          <span>Promo Discount</span>
+          <span id="cartDrawerDiscount">-$0.00</span>
+        </div>
+        <div class="cart-summary-row">
+          <span>Est. Vet/Health Tax (8%)</span>
+          <span id="cartDrawerTax">$0.00</span>
+        </div>
+        <div class="cart-summary-row total">
+          <span>Estimated Total</span>
+          <span id="cartDrawerTotal" style="color: var(--primary);">$0.00</span>
+        </div>
+<button class="btn btn-primary" style="width: 100%; margin-top: 1rem;" onclick="openCheckoutModal()">
+  <i class="bi bi-shield-lock-fill"></i> Proceed to Checkout
+</button>
+      </div>
+    </div>
+  </div>
+<!-- =========================================================================
+       12. QUICK VIEW MODAL
+       ========================================================================= -->
+<div id="quickViewModal" class="modal-backdrop">
+  <div class="modal-container">
+    <button class="modal-close-btn" onclick="closeModals()"><i class="bi bi-x-lg"></i></button>
+    <div id="quickViewContent">
+      <!-- Rendered dynamically -->
+      </div>
+      </div>
+      </div>
+
+  <!-- =========================================================================
+             13. MULTI-STEP CHECKOUT MODAL
+             ========================================================================= -->
+  <div id="checkoutModal" class="modal-backdrop">
+    <div class="modal-container" style="max-width: 620px;">
+      <button class="modal-close-btn" onclick="closeModals()"><i class="bi bi-x-lg"></i></button>
+
+      <div style="padding: 2.5rem 2.2rem;">
+        <div style="text-align: center; margin-bottom: 2rem;">
+          <h2 style="font-size: 1.8rem; margin-bottom: 0.3rem;">Secure Adoption & Checkout</h2>
+          <p style="color: var(--text-muted); font-size: 0.88rem;">256-Bit SSL Encrypted Order Processing</p>
+        </div>
+
+        <!-- Step 1: Parent & Delivery Details -->
+        <div id="checkoutStep1" class="checkout-step-content">
+          <h4 style="font-size: 1.1rem; margin-bottom: 1.2rem;"><i class="bi bi-person-badge"></i> Step 1: Pet Parent & Address
+          </h4>
+          <form onsubmit="event.preventDefault(); setCheckoutStep(2);">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+              <div>
+                <label style="font-size: 0.82rem; font-weight: 700; display: block; margin-bottom: 0.3rem;">Full Name</label>
+                <input type="text" id="checkoutName" required
+                  style="width: 100%; padding: 0.65rem 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); background: var(--bg-muted);">
+              </div>
+              <div>
+                <label style="font-size: 0.82rem; font-weight: 700; display: block; margin-bottom: 0.3rem;">Phone Number</label>
+                <input type="tel" required placeholder="+234 700 000 0000"
+                  style="width: 100%; padding: 0.65rem 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); background: var(--bg-muted);">
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <label style="font-size: 0.82rem; font-weight: 700; display: block; margin-bottom: 0.3rem;">Email Address</label>
+              <input type="email" id="checkoutEmail" required placeholder="parent@example.com"
+                style="width: 100%; padding: 0.65rem 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); background: var(--bg-muted);">
+            </div>
+            <div style="margin-bottom: 1.5rem;">
+              <label style="font-size: 0.82rem; font-weight: 700; display: block; margin-bottom: 0.3rem;">Delivery or Pick-up
+                Address</label>
+              <input type="text" required placeholder="Street address, City, State"
+                style="width: 100%; padding: 0.65rem 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); background: var(--bg-muted);">
+            </div>
+<button type="submit" class="btn btn-primary" style="width: 100%;">
+  Continue to Payment Method <i class="bi bi-arrow-right"></i>
+</button>
+</form>
+            </div>
+
+        <!-- Step 2: Payment Method -->
+        <div id="checkoutStep2" class="checkout-step-content" style="display: none;">
+          <h4 style="font-size: 1.1rem; margin-bottom: 1.2rem;"><i class="bi bi-credit-card-2-front"></i> Step 2: Select Payment
+            Method</h4>
+          <form onsubmit="processCheckoutOrder(event)">
+            <div style="display: flex; gap: 0.8rem; margin-bottom: 1.5rem;">
+              <label
+                style="flex: 1; border: 2px solid var(--primary); padding: 0.85rem; border-radius: var(--radius-md); text-align: center; cursor: pointer; background: var(--primary-light);">
+                <input type="radio" name="payment_method" checked style="margin-right: 0.4rem;">
+                <strong>Card / Paystack</strong>
+              </label>
+              <label
+                style="flex: 1; border: 1px solid var(--border-color); padding: 0.85rem; border-radius: var(--radius-md); text-align: center; cursor: pointer;">
+                <input type="radio" name="payment_method" style="margin-right: 0.4rem;">
+                <strong>Bank Transfer</strong>
+              </label>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <label style="font-size: 0.82rem; font-weight: 700; display: block; margin-bottom: 0.3rem;">Card Number</label>
+              <input type="text" placeholder="4242 •••• •••• 4242" required
+                style="width: 100%; padding: 0.65rem 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); background: var(--bg-muted);">
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
+              <div>
+                <label style="font-size: 0.82rem; font-weight: 700; display: block; margin-bottom: 0.3rem;">Expiry Date</label>
+                <input type="text" placeholder="MM/YY" required
+                  style="width: 100%; padding: 0.65rem 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); background: var(--bg-muted);">
+              </div>
+              <div>
+                <label style="font-size: 0.82rem; font-weight: 700; display: block; margin-bottom: 0.3rem;">CVV / CVC</label>
+                <input type="password" maxlength="4" placeholder="123" required
+                  style="width: 100%; padding: 0.65rem 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); background: var(--bg-muted);">
+              </div>
+              </div>
+
+            <div
+              style="background: var(--bg-muted); padding: 1rem; border-radius: var(--radius-md); margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+              <span>Total Chargeable:</span>
+              <strong id="checkoutOrderTotal" style="color: var(--primary); font-size: 1.3rem;">$0.00</strong>
+            </div>
+<div style="display: flex; gap: 0.8rem;">
+  <button type="button" class="btn btn-secondary" onclick="setCheckoutStep(1)" style="flex: 1;">Back</button>
+  <button type="submit" class="btn btn-primary" style="flex: 2;">
+    <i class="bi bi-lock-fill"></i> Pay & Complete Adoption
+  </button>
+</div>
+</form>
+        </div>
+
+        <!-- Step 3: Success Confirmation -->
+        <div id="checkoutStep3" class="checkout-step-content" style="display: none; text-align: center; padding: 1.5rem 0;">
+          <div style="font-size: 4rem; color: var(--secondary); margin-bottom: 0.5rem;">🎉</div>
+          <h3 style="font-size: 1.8rem; margin-bottom: 0.5rem;">Congratulations, <span id="orderSuccessName">Pet Parent</span>!
+          </h3>
+          <p style="color: var(--text-secondary); max-width: 440px; margin: 0 auto 1.5rem;">
+            Your order and adoption reservation has been successfully confirmed. A receipt and handover instructions have been
+            sent to your email.
+          </p>
+          <div
+            style="background: var(--bg-muted); padding: 1rem; border-radius: var(--radius-md); display: inline-block; margin-bottom: 2rem;">
+            <span style="font-size: 0.85rem; color: var(--text-muted);">Order Tracking ID:</span><br>
+            <strong id="orderSuccessId" style="font-size: 1.2rem; color: var(--primary);">PETIT-892144</strong>
+          </div>
+<div>
+  <button class="btn btn-primary btn-lg" onclick="closeModals()">
+    Back to Pet Store
+  </button>
+</div>
+</div>
+
+      </div>
+      </div>
+      </div>
+
+  <!-- =========================================================================
+             14. 3-STEP ETHICAL ADOPTION VERIFICATION MODAL
+             ========================================================================= -->
+  <div id="adoptionModal" class="modal-backdrop">
+    <div class="modal-container" style="max-width: 650px;">
+      <button class="modal-close-btn" onclick="closeModals()"><i class="bi bi-x-lg"></i></button>
+      <div style="padding: 2.2rem;">
+        <div style="text-align: center; margin-bottom: 1.5rem;">
+          <span class="section-badge"><i class="bi bi-shield-check"></i> Ethical Screening</span>
+          <h2 style="font-size: 1.8rem; margin: 0.4rem 0 0.2rem;">Adopt <span class="adopt-pet-name">Companion</span></h2>
+          <p class="adopt-pet-breed" style="color: var(--text-muted); font-size: 0.88rem;"></p>
+        </div>
+
+        <!-- Stepper Indicator -->
+        <div class="app-step-indicator">
+          <div class="step-node active">
+            <div class="step-node-bubble">1</div>
+            <span class="step-node-title">Suitability</span>
+          </div>
+          <div class="step-node">
+            <div class="step-node-bubble">2</div>
+            <span class="step-node-title">Care Pledge</span>
+          </div>
+          <div class="step-node">
+            <div class="step-node-bubble">3</div>
+            <span class="step-node-title">Certificate</span>
+          </div>
+        </div>
+
+        <!-- Step 1: Parent & Habitat Details -->
+        <div id="adoptionStep1" class="adoption-step-view">
+          <form onsubmit="processAdoptionStep1(event)">
+            <div style="display: flex; gap: 1rem; align-items: center; background: var(--bg-muted); padding: 1rem; border-radius: var(--radius-md); margin-bottom: 1.2rem;">
+              <img id="adoptPetPreviewImg" src="assets/corgy.webp" alt="Pet Preview" style="width: 60px; height: 60px; border-radius: var(--radius-sm); object-fit: cover;">
+              <div>
+                <h4 class="adopt-pet-name" style="font-size: 1.1rem; margin-bottom: 0.2rem;">Sir Winston</h4>
+                <span style="font-size: 0.82rem; color: var(--text-muted);">Adoption Fee: <strong id="adoptPetFee" style="color: var(--primary);">$350</strong> (Full Vet Passport & Microchip Included)</span>
+              </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+              <div>
+                <label style="font-size: 0.82rem; font-weight: 700; display: block; margin-bottom: 0.3rem;">Your Full Name</label>
+                <input type="text" id="adoptParentName" required placeholder="Elena Rostova" style="width: 100%; padding: 0.65rem 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); background: var(--bg-muted);">
+              </div>
+              <div>
+                <label style="font-size: 0.82rem; font-weight: 700; display: block; margin-bottom: 0.3rem;">Email Address</label>
+                <input type="email" id="adoptParentEmail" required placeholder="elena@example.com" style="width: 100%; padding: 0.65rem 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); background: var(--bg-muted);">
+              </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.2rem;">
+              <div>
+                <label style="font-size: 0.82rem; font-weight: 700; display: block; margin-bottom: 0.3rem;">Phone Number</label>
+                <input type="tel" required placeholder="+234 700 000 0000" style="width: 100%; padding: 0.65rem 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); background: var(--bg-muted);">
+              </div>
+              <div>
+                <label style="font-size: 0.82rem; font-weight: 700; display: block; margin-bottom: 0.3rem;">Primary Residence Habitat</label>
+                <select style="width: 100%; padding: 0.65rem 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); background: var(--bg-muted);">
+                  <option>Apartment / Flat (Indoor)</option>
+                  <option>Single Family Home with Yard</option>
+                  <option>Pastoral Farmstead / Acreage</option>
+                </select>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%;">
+              Proceed to Care Pledge & Verification <i class="bi bi-arrow-right"></i>
+            </button>
+          </form>
+        </div>
+
+        <!-- Step 2: Ethical Care Pledge -->
+        <div id="adoptionStep2" class="adoption-step-view" style="display: none;">
+          <form onsubmit="processAdoptionFinal(event)">
+            <div style="margin-bottom: 1.5rem;">
+              <h4 style="font-size: 1.05rem; margin-bottom: 0.8rem;">Ethical Pet Parent Pledges</h4>
+              <label class="pledge-checkbox-card">
+                <input type="checkbox" checked required>
+                <div>
+                  <strong style="display: block; font-size: 0.9rem;">Veterinary & Health Commitment</strong>
+                  <span style="font-size: 0.8rem; color: var(--text-secondary);">I agree to provide annual vet checkups, required booster vaccinations, and certified high-quality nutrition.</span>
+                </div>
+              </label>
+              <label class="pledge-checkbox-card">
+                <input type="checkbox" checked required>
+                <div>
+                  <strong style="display: block; font-size: 0.9rem;">Safe & Enriched Habitat</strong>
+                  <span style="font-size: 0.8rem; color: var(--text-secondary);">I confirm my residence provides secure, comfortable conditions suited to this companion's breed and lifestyle.</span>
+                </div>
+              </label>
+              <label class="pledge-checkbox-card">
+                <input type="checkbox" checked required>
+                <div>
+                  <strong style="display: block; font-size: 0.9rem;">Lifetime Care Guarantee</strong>
+                  <span style="font-size: 0.8rem; color: var(--text-secondary);">I agree that if my circumstances ever change, PET.IT provides lifetime concierge rehoming and support.</span>
+                </div>
+              </label>
+            </div>
+
+            <div style="display: flex; gap: 0.8rem;">
+              <button type="button" class="btn btn-secondary" onclick="setAdoptionStep(1)" style="flex: 1;">Back</button>
+              <button type="submit" class="btn btn-primary" style="flex: 2;">
+                <i class="bi bi-patch-check-fill"></i> Approve & Generate Certificate
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Step 3: Official Certificate Generation -->
+        <div id="adoptionStep3" class="adoption-step-view" style="display: none;">
+          <div id="adoptionCertificateWrapper"></div>
+          <div style="display: flex; gap: 0.8rem; justify-content: center; margin-top: 1.5rem; flex-wrap: wrap;">
+            <button class="btn btn-primary" onclick="printCertificate()">
+              <i class="bi bi-printer-fill"></i> Print / Save Certificate
+            </button>
+            <button class="btn btn-secondary" onclick="closeModals()">
+              Back to Pet Store
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+             15. PET COMPARISON MODAL & FLOATING BAR
+             ========================================================================= -->
+  <div id="compareFloatingBar" class="compare-floating-bar">
+    <span id="compareCountText" style="font-size: 0.85rem; font-weight: 700; color: var(--primary);">0/2 Pets</span>
+    <div id="comparePillsContainer" style="display: flex; gap: 0.5rem;"></div>
+    <button class="btn btn-primary btn-sm" onclick="openCompareModal()">
+      <i class="bi bi-arrow-left-right"></i> Compare Now
+    </button>
+  </div>
+
+  <div id="compareModal" class="modal-backdrop">
+    <div class="modal-container" style="max-width: 720px;">
+      <button class="modal-close-btn" onclick="closeModals()"><i class="bi bi-x-lg"></i></button>
+      <div id="compareModalContent"></div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+             16. PET PARENT PROFILE DASHBOARD MODAL
+             ========================================================================= -->
+  <div id="profileModal" class="modal-backdrop">
+    <div class="modal-container" style="max-width: 580px;">
+      <button class="modal-close-btn" onclick="closeModals()"><i class="bi bi-x-lg"></i></button>
+      <div id="profileModalContent"></div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+             17. SERVICE BOOKING MODAL
+             ========================================================================= -->
+  <div id="bookingModal" class="modal-backdrop">
+    <div class="modal-container" style="max-width: 520px;">
+      <button class="modal-close-btn" onclick="closeModals()"><i class="bi bi-x-lg"></i></button>
+
+      <div style="padding: 2.5rem 2rem;">
+        <h2 style="font-size: 1.6rem; margin-bottom: 0.3rem;"><i class="bi bi-calendar-check"
+            style="color: var(--primary);"></i> Book Pet Service</h2>
+        <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 1.8rem;">Schedule an appointment with our
+          master groomers and licensed vets.</p>
+
+        <form onsubmit="processBooking(event)">
+          <div style="margin-bottom: 1rem;">
+            <label style="font-size: 0.82rem; font-weight: 700; display: block; margin-bottom: 0.3rem;">Selected Service</label>
+            <input type="text" id="bookingServiceName" readonly
+              style="width: 100%; padding: 0.65rem 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); background: var(--bg-muted); font-weight: 700;">
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+            <div>
+              <label style="font-size: 0.82rem; font-weight: 700; display: block; margin-bottom: 0.3rem;">Your Name</label>
+              <input type="text" required placeholder="Sarah Jenkins"
+                style="width: 100%; padding: 0.65rem 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); background: var(--bg-muted);">
+            </div>
+            <div>
+              <label style="font-size: 0.82rem; font-weight: 700; display: block; margin-bottom: 0.3rem;">Pet Breed / Name</label>
+              <input type="text" required placeholder="Corgi / Winston"
+                style="width: 100%; padding: 0.65rem 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); background: var(--bg-muted);">
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
+            <div>
+              <label style="font-size: 0.82rem; font-weight: 700; display: block; margin-bottom: 0.3rem;">Preferred Date</label>
+              <input type="date" required
+                style="width: 100%; padding: 0.65rem 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); background: var(--bg-muted);">
+            </div>
+            <div>
+              <label style="font-size: 0.82rem; font-weight: 700; display: block; margin-bottom: 0.3rem;">Preferred Time</label>
+              <select
+                style="width: 100%; padding: 0.65rem 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); background: var(--bg-muted);">
+                <option>Morning (09:00 AM)</option>
+                <option>Mid-Day (01:00 PM)</option>
+                <option>Evening (04:30 PM)</option>
+              </select>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%;">
+            Confirm Service Reservation
+          </button>
         </form>
       </div>
     </div>
-  </nav>
-</header>
-
-<main>
-
-  <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-   
-    </div>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="./The 15 Most Realistic Australian Shepherd and Border Collie Paintings.jfif" class="bd-placeholder-img" width="100%" height="100%" src="./assets/download (8).svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777" alt="">
-
-        <div class="container">
-          <div class="carousel-caption text-start">
-            <h1>PET.IT</h1>
-            <p>Get your favourite pet from us and be happy</p>
-            <p><a class="btn btn-lg btn-primary" href="./signup.html">Sign up today</a></p>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item">
-          <img src="isolated-shot-ginger-cat-looking-retriever-dog-looking-camera-white-surface.jpg" alt=""
-            class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
-            preserveAspectRatio="xMidYMid slice" focusable="false">
-          <rect width="100%" height="100%" fill="#777" />>
-        <div class="container">
-          <div class="carousel-caption">
-            <h1>Another example headline.</h1>
-            <p>Some representative placeholder content for the second slide of the carousel.</p>
-            <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img src="./assets/cat-British-Shorthair-grey.webp" class="bd-placeholder-img" width="100%" height="100%" src="./assets/download (8).svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777" alt="">
-
-        <div class="container">
-          <div class="carousel-caption text-end">
-            <h1>One more for good measure.</h1>
-            <p>Some representative placeholder content for the third slide of this carousel.</p>
-            <p><a class="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel"  data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
   </div>
-<hr><br><br>
 
-  <!-- Marketing messaging and featurettes
-  ================================================== -->
-  <!-- Wrap the rest of the page in another container to center all the content. -->
+  <!-- Toast Notification Container -->
+  <div id="toastContainer" class="toast-container"></div>
 
-  <div class="container marketing">
-
-  <a href="#pet" id="pet"></a>
-  <h1 class="text-center text-body-secondary mb-5 mt-1">Our Pets</h1>
-
-
-    <!-- Three columns of text below the carousel -->
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-      <div class="col">
-        <div class="card h-100">
-          <img src="assets/corgy.webp" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Corgy</h5>
-            <p class="card-text">$150</p>
-            <p><a class="btn btn-lg btn-primary" href="#">Add to Chart</a></p>
-          </div>
-          <div class="card-footer">
-            <small class="text-body-secondary">Last updated 3 mins ago</small>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-100">
-          <img src="assets/cat-hair-growl-teeth-snarl.webp" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Hair-growl-teeth-snarl</h5>
-            <p class="card-text">$200</p>
-            <p><a class="btn btn-lg btn-primary" href="#">Add to Chart</a></p>
-          </div>
-          <div class="card-footer">
-            <small class="text-body-secondary">Last updated 3 mins ago</small>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-100">
-          <img src="assets/white rabbit.webp" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Snow White Rabbit</h5>
-            <p class="card-text">$150</p>
-            <p><a class="btn btn-lg btn-primary" href="#">Add to Chart</a></p>
-          </div>
-          <div class="card-footer">
-            <small class="text-body-secondary">Last updated 3 mins ago</small>
-          </div>
-        </div>
-      </div>
-    </div>
-    <p><a class="btn btn-lg btn-primary" id="more" href="#">More Pets &#8594</a></p>
-    <!-- START THE FEATURETTES -->
-
-    <hr class="featurette-divider">
-
-    <div class="row featurette">
-      <div class="col-md-7">
-        <h2 class="featurette-heading fw-normal lh-1">First featurette heading. <span class="text-muted">It’ll blow your mind.</span></h2>
-        <p class="lead">Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-          Cumque adipisci amet harum. Sit illum rerum alias aspernatur mollitia! Expedita, sequi.</p>
-      </div>
-      <div class="col-md-5">
-        <img src="./assets/Norwegian-Forest-cat-tabby.webp" alt="">
-
-      </div>
-    </div>
-
-    <hr class="featurette-divider">
-
-    <div class="row featurette">
-      <div class="col-md-7 order-md-2">
-        <h2 class="featurette-heading fw-normal lh-1">Oh yeah, it’s that good. <span class="text-muted">See for yourself.</span></h2>
-        <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-           Quaerat delectus, similique doloremque accusamus earum debitis aliquid beatae dolorem aspernatur architecto!</p>
-      </div>
-      <div class="col-md-5 order-md-1">
-        <img src="./isolated-shot-ginger-cat-looking-retriever-dog-looking-camera-white-surface.jpg" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="600" height="600" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em" alt="">
-
-      </div>
-    </div>
-
-    <hr class="featurette-divider">
-
-    <div class="row featurette">
-      <div class="col-md-7">
-        <h2 class="featurette-heading fw-normal lh-1">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-        <p class="lead">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorum sapiente sint,
-           numquam commodi nulla consequatur rem. Provident reiciendis soluta dolore!</p>
-      </div>
-      <div class="col-md-5">
-        <img src="./assets/Snowshoe-cat.webp" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em" alt="">
-      </div>
-    </div>
-
-    <hr class="featurette-divider">
-
-    <!-- /END THE FEATURETTES -->
-
-  </div><!-- /.container -->
-
-
-  <!-- FOOTER -->
-  <footer class="container">
-    <p class="float-end"><a href="#">Back to top</a></p>
-    <p>&copy; 2017–2023 Irenioyan, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-  </footer>
-</main>
-
-
-    <script src="js/bootstrap.bundle.min.js"></script>
-
-      
+  <!-- Core App JS -->
+  <script src="js/app.js"></script>
 </body>
-   
-
 </html>
