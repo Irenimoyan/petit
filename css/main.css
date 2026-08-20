@@ -186,6 +186,7 @@ button, input, select, textarea {
 
 .gradient-text {
   background: linear-gradient(135deg, #f59e0b 0%, #f97316 50%, #ec4899 100%);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
